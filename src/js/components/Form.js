@@ -15,20 +15,18 @@ class ConnectedForm extends Component {
     this.state = {
       title: ""
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ [event.target.id]: event.target.value });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     const { title } = this.state;
     this.props.addArticle({ title });
     this.setState({ title: "" });
-  }
+  };
   render() {
     const { title } = this.state;
     return (
@@ -48,9 +46,6 @@ class ConnectedForm extends Component {
   }
 }
 
-const Form = connect(
-  null,
-  mapDispatchToProps
-)(ConnectedForm);
+const Form = connect(null, mapDispatchToProps)(ConnectedForm);
 
 export default Form;
